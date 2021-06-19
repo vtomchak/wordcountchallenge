@@ -23,7 +23,12 @@ import React from 'react';
 </div> */
 }
 const TextInput = () => {
-  return <div>Hi</div>;
+  return (
+    <div>
+      Input or Paste Any Text and Select Which Statistics You'd Like to Know
+      Below:
+    </div>
+  );
 };
 
 export default TextInput;
