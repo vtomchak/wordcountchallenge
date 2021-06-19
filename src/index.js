@@ -5,7 +5,7 @@ const App = function () {
   return (
     <div class='ui raised very padded text container segment'>
       <form class='ui form'>
-        <div class='ui huge header'>Word Counter</div>
+        <div class='ui huge header'>Word Counter Counter</div>
         <div class='field'>
           <textarea placeholder='Write or copy your text here...'></textarea>
         </div>
