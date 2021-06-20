@@ -8,6 +8,12 @@ import {
   wordFunc,
   charFunc,
   sentFunc,
+  bigram,
+  bigramWord,
+  uniqueBigram,
+  uniqueBigramWord,
+  wordFreq,
+  wordUnique,
 } from './helpers';
 
 class App extends React.Component {
@@ -19,10 +25,14 @@ class App extends React.Component {
       charSelected: false,
       sentSelected: false,
       parSelected: false,
+      bigramSelected: false,
+      uniqueBigramSelected: false,
       wordCount: 0,
       charCount: 0,
       sentCount: 0,
       parCount: 0,
+      bigramCount: 0,
+      uniqueBigramCount: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -44,6 +54,8 @@ class App extends React.Component {
     const words = wordFunc(str);
     const characters = charFunc(str);
     const sentences = sentFunc(str);
+    const bigrams = bigramWord(words);
+    const uniqueBigrams = uniqueBigramWord(words);
 
     const emp = removeEmptyElements(paragraphs);
 
@@ -55,6 +67,8 @@ class App extends React.Component {
         charCount: characters.length,
         sentCount: sentences.length,
         parCount: paragraphs.length,
+        bigramCount: Object.keys(bigrams).length,
+        uniqueBigramCount: Object.keys(uniqueBigrams).length,
       });
   }
   handleClear(event) {
@@ -65,6 +79,8 @@ class App extends React.Component {
       charCount: 0,
       sentCount: 0,
       parCount: 0,
+      bigramCount: 0,
+      uniqueBigramCount: 0,
     });
   }
   render() {
@@ -117,6 +133,24 @@ class App extends React.Component {
                   type='checkbox'
                   name='parSelected'
                   checked={this.state.parSelected}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Bigram Count:
+                <input
+                  type='checkbox'
+                  name='bigramSelected'
+                  checked={this.state.bigramSelected}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Unique Bigram Count:
+                <input
+                  type='checkbox'
+                  name='uniqueBigramSelected'
+                  checked={this.state.uniqueBigramSelected}
                   onChange={this.handleChange}
                 />
               </label>
