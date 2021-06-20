@@ -41,36 +41,25 @@ class App extends React.Component {
       return removeEmptyElements(arr);
     };
     const emp = removeEmptyElements(par);
-    console.log('PAR', par.length);
-    console.log('remove empty', emp);
+    // console.log('PAR', par.length);
+    // console.log('remove empty', emp);
 
     this.state.textSubmit &&
-      this.state.countSelected &&
       this.setState({
         wordCount: str
           .replace(/(\r\n|\n|\r)/gm, ' ')
           .trim()
           .split(' ')
           .filter((w) => w).length,
-      });
-    this.state.charSelected &&
-      this.setState({
         charCount: str.replace(/[^a-z0-9+]+/gi, '').length,
-      });
-    this.state.sentSelected &&
-      this.setState({
         sentCount: str
           .replace('...', '')
           .split(/[.!?]+\s/)
           .filter(Boolean).length,
-      });
-    this.state.parSelected &&
-      this.setState({
         parCount: par.length,
       });
   }
   render() {
-    console.log('STATE', this.state);
     return (
       <div class='ui raised very padded text container segment'>
         <form class='ui form' onSubmit={this.handleSubmit}>
@@ -130,8 +119,8 @@ class App extends React.Component {
           <button class='ui left button' type='submit'>
             Clear Text
           </button>
+          {this.state.wordCount > 0 && <WordCountDisplay props={this.state} />}
         </form>
-        <WordCountDisplay props={this.state} />
       </div>
     );
   }
