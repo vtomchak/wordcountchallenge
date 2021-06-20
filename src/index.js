@@ -19,6 +19,7 @@ class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
 
   handleChange(event) {
@@ -59,7 +60,19 @@ class App extends React.Component {
         parCount: par.length,
       });
   }
+  handleClear(event) {
+    event.preventDefault();
+    this.setState({
+      textSubmit: '',
+
+      wordCount: 0,
+      charCount: 0,
+      sentCount: 0,
+      parCount: 0,
+    });
+  }
   render() {
+    console.log('State', this.state);
     return (
       <div class='ui raised very padded text container segment'>
         <form class='ui form' onSubmit={this.handleSubmit}>
@@ -116,7 +129,12 @@ class App extends React.Component {
           <button class='ui right button' type='submit'>
             Submit
           </button>
-          <button class='ui left button' type='submit'>
+          <button
+            class='ui left button'
+            onClick={this.handleClear}
+            type='reset'
+            value='Reset'
+          >
             Clear Text
           </button>
           {this.state.wordCount > 0 && <WordCountDisplay props={this.state} />}
