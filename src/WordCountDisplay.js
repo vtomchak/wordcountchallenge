@@ -3,59 +3,60 @@ import React from 'react';
 const WordCountDisplay = (props) => {
   return (
     <div class='ui relaxed divided list'>
-      {console.log('Props', props.props.countSelected)}
-      {props.props.countSelected && (
+      {console.log('Props', props.props.checkboxValues.countSelected)}
+      {props.props.checkboxValues.countSelected && (
         <div class='item'>
           <i class='large github middle aligned icon'></i>
           <div class='content'>
-            <a class='header'>Word Count: {props.props.wordCount}</a>
+            <a class='header'>Word Count: {props.props.counts.wordCount}</a>
             <div class='description'>Updated 10 mins ago</div>
           </div>
         </div>
       )}
-      {props.props.charSelected && (
-        <div class='item'>
-          <i class='large github middle aligned icon'></i>
-          <div class='content'>
-            <a class='header'>Character Count: {props.props.charCount}</a>
-            <div class='description'>Updated 22 mins ago</div>
-          </div>
-        </div>
-      )}
-      {props.props.sentSelected && (
-        <div class='item'>
-          <i class='large github middle aligned icon'></i>
-          <div class='content'>
-            <a class='header'>Sentence Count: {props.props.sentCount}</a>
-            <div class='description'>Updated 34 mins ago</div>
-          </div>
-        </div>
-      )}
-      {props.props.parSelected && (
-        <div class='item'>
-          <i class='large github middle aligned icon'></i>
-          <div class='content'>
-            <a class='header'>Paragraph Count: {props.props.parCount}</a>
-            <div class='description'>Updated 34 mins ago</div>
-          </div>
-        </div>
-      )}
-      {props.props.bigramSelected && (
-        <div class='item'>
-          <i class='large github middle aligned icon'></i>
-          <div class='content'>
-            <a class='header'>Bigram Count: {props.props.bigramCount}</a>
-            <div class='description'>Updated 34 mins ago</div>
-          </div>
-        </div>
-      )}
-      {props.props.uniqueBigramSelected && (
+      {props.props.checkboxValues.charSelected && (
         <div class='item'>
           <i class='large github middle aligned icon'></i>
           <div class='content'>
             <a class='header'>
-              {' '}
-              Unique Bigram Count: {props.props.uniqueBigramCount}
+              Character Count: {props.props.counts.charCount}
+            </a>
+            <div class='description'>Updated 22 mins ago</div>
+          </div>
+        </div>
+      )}
+      {props.props.checkboxValues.sentSelected && (
+        <div class='item'>
+          <i class='large github middle aligned icon'></i>
+          <div class='content'>
+            <a class='header'>Sentence Count: {props.props.counts.sentCount}</a>
+            <div class='description'>Updated 34 mins ago</div>
+          </div>
+        </div>
+      )}
+      {props.props.checkboxValues.parSelected && (
+        <div class='item'>
+          <i class='large github middle aligned icon'></i>
+          <div class='content'>
+            <a class='header'>Paragraph Count: {props.props.counts.parCount}</a>
+            <div class='description'>Updated 34 mins ago</div>
+          </div>
+        </div>
+      )}
+      {props.props.checkboxValues.bigramSelected && (
+        <div class='item'>
+          <i class='large github middle aligned icon'></i>
+          <div class='content'>
+            <a class='header'>Bigram Count: {props.props.counts.bigramCount}</a>
+            <div class='description'>Updated 34 mins ago</div>
+          </div>
+        </div>
+      )}
+      {props.props.checkboxValues.uniqueBigramSelected && (
+        <div class='item'>
+          <i class='large github middle aligned icon'></i>
+          <div class='content'>
+            <a class='header'>
+              Unique Bigram Count: {props.props.counts.uniqueBigramCount}
             </a>
             <div class='description'>Updated 34 mins ago</div>
           </div>

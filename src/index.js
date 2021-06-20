@@ -15,26 +15,32 @@ import {
   wordFreq,
   wordUnique,
 } from './helpers';
-
+const checkboxValues = {
+  countSelected: true,
+  charSelected: false,
+  sentSelected: false,
+  parSelected: false,
+  bigramSelected: false,
+  uniqueBigramSelected: false,
+};
+const counts = {
+  wordCount: 0,
+  charCount: 0,
+  sentCount: 0,
+  parCount: 0,
+  bigramCount: 0,
+  uniqueBigramCount: 0,
+};
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       textSubmit: '',
-      countSelected: true,
-      charSelected: false,
-      sentSelected: false,
-      parSelected: false,
-      bigramSelected: false,
-      uniqueBigramSelected: false,
-      wordCount: 0,
-      charCount: 0,
-      sentCount: 0,
-      parCount: 0,
-      bigramCount: 0,
-      uniqueBigramCount: 0,
+      checkboxValues,
+      counts,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClear = this.handleClear.bind(this);
   }
@@ -43,8 +49,17 @@ class App extends React.Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
+    console.log('TARGET', target);
     this.setState({
       [name]: value,
+    });
+  }
+  handleCheck(event) {
+    const target = event.target;
+    const value = target.checked;
+    const name = target.name;
+    this.setState({
+      checkboxValues: { ...this.state.checkboxValues, [name]: value },
     });
   }
   handleSubmit(event) {
@@ -63,24 +78,28 @@ class App extends React.Component {
 
     this.state.textSubmit &&
       this.setState({
-        wordCount: words.length,
-        charCount: characters.length,
-        sentCount: sentences.length,
-        parCount: paragraphs.length,
-        bigramCount: Object.keys(bigrams).length,
-        uniqueBigramCount: Object.keys(uniqueBigrams).length,
+        counts: {
+          wordCount: words.length,
+          charCount: characters.length,
+          sentCount: sentences.length,
+          parCount: paragraphs.length,
+          bigramCount: Object.keys(bigrams).length,
+          uniqueBigramCount: Object.keys(uniqueBigrams).length,
+        },
       });
   }
   handleClear(event) {
     event.preventDefault();
     this.setState({
       textSubmit: '',
-      wordCount: 0,
-      charCount: 0,
-      sentCount: 0,
-      parCount: 0,
-      bigramCount: 0,
-      uniqueBigramCount: 0,
+      counts: {
+        wordCount: 0,
+        charCount: 0,
+        sentCount: 0,
+        parCount: 0,
+        bigramCount: 0,
+        uniqueBigramCount: 0,
+      },
     });
   }
   render() {
@@ -106,8 +125,8 @@ class App extends React.Component {
                     <input
                       type='checkbox'
                       name='countSelected'
-                      checked={this.state.countSelected}
-                      onChange={this.handleChange}
+                      checked={this.state.checkboxValues.countSelected}
+                      onChange={this.handleCheck}
                     />
                   </label>
                   <label>
@@ -115,8 +134,8 @@ class App extends React.Component {
                     <input
                       type='checkbox'
                       name='charSelected'
-                      checked={this.state.charSelected}
-                      onChange={this.handleChange}
+                      checked={this.state.checkboxValues.charSelected}
+                      onChange={this.handleCheck}
                     />
                   </label>
                   <label>
@@ -124,8 +143,8 @@ class App extends React.Component {
                     <input
                       type='checkbox'
                       name='sentSelected'
-                      checked={this.state.sentSelected}
-                      onChange={this.handleChange}
+                      checked={this.state.checkboxValues.sentSelected}
+                      onChange={this.handleCheck}
                     />
                   </label>
                   <label>
@@ -133,8 +152,8 @@ class App extends React.Component {
                     <input
                       type='checkbox'
                       name='parSelected'
-                      checked={this.state.parSelected}
-                      onChange={this.handleChange}
+                      checked={this.state.checkboxValues.parSelected}
+                      onChange={this.handleCheck}
                     />
                   </label>
                   <label>
@@ -142,8 +161,8 @@ class App extends React.Component {
                     <input
                       type='checkbox'
                       name='bigramSelected'
-                      checked={this.state.bigramSelected}
-                      onChange={this.handleChange}
+                      checked={this.state.checkboxValues.bigramSelected}
+                      onChange={this.handleCheck}
                     />
                   </label>
                   <label>
@@ -151,8 +170,8 @@ class App extends React.Component {
                     <input
                       type='checkbox'
                       name='uniqueBigramSelected'
-                      checked={this.state.uniqueBigramSelected}
-                      onChange={this.handleChange}
+                      checked={this.state.checkboxValues.uniqueBigramSelected}
+                      onChange={this.handleCheck}
                     />
                   </label>
                 </div>
@@ -168,13 +187,13 @@ class App extends React.Component {
               >
                 Clear Text
               </button>
-              {this.state.wordCount > 0 && (
+              {this.state.counts.wordCount > 0 && (
                 <WordCountDisplay props={this.state} />
               )}
             </form>
           </div>
         </div>
-        {this.state.wordCount > 0 && (
+        {this.state.counts.wordCount > 0 && (
           <div className=' raised card'>
             <div className='content'>
               <TextInput />
