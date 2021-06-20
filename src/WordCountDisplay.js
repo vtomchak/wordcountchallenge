@@ -3,8 +3,9 @@ import React from 'react';
 const WordCountDisplay = (props) => {
   return (
     <div class='ui relaxed divided list'>
-      {console.log('Props', props.props.checkboxValues.countSelected)}
-      {props.props.checkboxValues.countSelected && (
+      {console.log('Props', props.props.checkboxValues['Word Count:'])}
+
+      {props.props.checkboxValues['Word Count:'] && (
         <div class='item'>
           <i class='large github middle aligned icon'></i>
           <div class='content'>
@@ -13,7 +14,7 @@ const WordCountDisplay = (props) => {
           </div>
         </div>
       )}
-      {props.props.checkboxValues.charSelected && (
+      {props.props.checkboxValues['Character Count:'] && (
         <div class='item'>
           <i class='large github middle aligned icon'></i>
           <div class='content'>
@@ -24,7 +25,7 @@ const WordCountDisplay = (props) => {
           </div>
         </div>
       )}
-      {props.props.checkboxValues.sentSelected && (
+      {props.props.checkboxValues['Sentence Count:'] && (
         <div class='item'>
           <i class='large github middle aligned icon'></i>
           <div class='content'>
@@ -33,7 +34,7 @@ const WordCountDisplay = (props) => {
           </div>
         </div>
       )}
-      {props.props.checkboxValues.parSelected && (
+      {props.props.checkboxValues['Paragraph Count:'] && (
         <div class='item'>
           <i class='large github middle aligned icon'></i>
           <div class='content'>
@@ -42,7 +43,7 @@ const WordCountDisplay = (props) => {
           </div>
         </div>
       )}
-      {props.props.checkboxValues.bigramSelected && (
+      {props.props.checkboxValues['Bigram Count:'] && (
         <div class='item'>
           <i class='large github middle aligned icon'></i>
           <div class='content'>
@@ -51,7 +52,7 @@ const WordCountDisplay = (props) => {
           </div>
         </div>
       )}
-      {props.props.checkboxValues.uniqueBigramSelected && (
+      {props.props.checkboxValues['Unique Bigram Count:'] && (
         <div class='item'>
           <i class='large github middle aligned icon'></i>
           <div class='content'>

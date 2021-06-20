@@ -15,22 +15,8 @@ import {
   wordFreq,
   wordUnique,
 } from './helpers';
-const checkboxValues = {
-  countSelected: true,
-  charSelected: false,
-  sentSelected: false,
-  parSelected: false,
-  bigramSelected: false,
-  uniqueBigramSelected: false,
-};
-const counts = {
-  wordCount: 0,
-  charCount: 0,
-  sentCount: 0,
-  parCount: 0,
-  bigramCount: 0,
-  uniqueBigramCount: 0,
-};
+import { counts, checkboxValues } from './config';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +26,6 @@ class App extends React.Component {
       counts,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleCheck = this.handleCheck.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClear = this.handleClear.bind(this);
   }
@@ -49,19 +34,16 @@ class App extends React.Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    console.log('TARGET', target);
-    this.setState({
-      [name]: value,
-    });
+
+    target.type === 'checkbox'
+      ? this.setState({
+          checkboxValues: { ...this.state.checkboxValues, [name]: value },
+        })
+      : this.setState({
+          [name]: value,
+        });
   }
-  handleCheck(event) {
-    const target = event.target;
-    const value = target.checked;
-    const name = target.name;
-    this.setState({
-      checkboxValues: { ...this.state.checkboxValues, [name]: value },
-    });
-  }
+
   handleSubmit(event) {
     event.preventDefault();
     const str = this.state.textSubmit;
@@ -92,18 +74,12 @@ class App extends React.Component {
     event.preventDefault();
     this.setState({
       textSubmit: '',
-      counts: {
-        wordCount: 0,
-        charCount: 0,
-        sentCount: 0,
-        parCount: 0,
-        bigramCount: 0,
-        uniqueBigramCount: 0,
-      },
+      counts,
     });
   }
   render() {
     console.log('State', this.state);
+
     return (
       <div className='ui two stackable cards'>
         <div className='fluid raised  card'>
@@ -112,6 +88,7 @@ class App extends React.Component {
               <div class='ui huge header'>Word Counter</div>
               <div class='field'>
                 <textarea
+                  type='text'
                   value={this.state.textSubmit}
                   name='textSubmit'
                   onChange={this.handleChange}
@@ -120,60 +97,18 @@ class App extends React.Component {
               </div>
               <div class='field'>
                 <div>
-                  <label>
-                    Word Count:
-                    <input
-                      type='checkbox'
-                      name='countSelected'
-                      checked={this.state.checkboxValues.countSelected}
-                      onChange={this.handleCheck}
-                    />
-                  </label>
-                  <label>
-                    Character Count:
-                    <input
-                      type='checkbox'
-                      name='charSelected'
-                      checked={this.state.checkboxValues.charSelected}
-                      onChange={this.handleCheck}
-                    />
-                  </label>
-                  <label>
-                    Sentence Count:
-                    <input
-                      type='checkbox'
-                      name='sentSelected'
-                      checked={this.state.checkboxValues.sentSelected}
-                      onChange={this.handleCheck}
-                    />
-                  </label>
-                  <label>
-                    Paragraph Count:
-                    <input
-                      type='checkbox'
-                      name='parSelected'
-                      checked={this.state.checkboxValues.parSelected}
-                      onChange={this.handleCheck}
-                    />
-                  </label>
-                  <label>
-                    Bigram Count:
-                    <input
-                      type='checkbox'
-                      name='bigramSelected'
-                      checked={this.state.checkboxValues.bigramSelected}
-                      onChange={this.handleCheck}
-                    />
-                  </label>
-                  <label>
-                    Unique Bigram Count:
-                    <input
-                      type='checkbox'
-                      name='uniqueBigramSelected'
-                      checked={this.state.checkboxValues.uniqueBigramSelected}
-                      onChange={this.handleCheck}
-                    />
-                  </label>
+                  {Object.keys(checkboxValues).map((check) => (
+                    <label key={check}>
+                      {check}
+                      <input
+                        key={check}
+                        type='checkbox'
+                        name={check}
+                        checked={this.state.checkboxValues.check}
+                        onChange={this.handleChange}
+                      />
+                    </label>
+                  ))}
                 </div>
               </div>
               <button class='ui right button' type='submit'>

@@ -138,5 +138,13 @@ export function wordUnique(str) {
   }
   return wordMap;
 }
-
+export function handleChange(event) {
+  const target = event.target;
+  const value = target.type === 'checkbox' ? target.checked : target.value;
+  const name = target.name;
+  console.log('TARGET', target);
+  this.setState({
+    [name]: value,
+  });
+}
 // console.log(wordUnique("the quick person did not realize his speed and the quick person bumped "))
