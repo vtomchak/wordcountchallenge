@@ -2,6 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TextInput from './TextInput';
 import WordCountDisplay from './WordCountDisplay';
+import {
+  makeParagraph,
+  removeEmptyElements,
+  wordFunc,
+  charFunc,
+  sentFunc,
+} from './helpers';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,38 +40,27 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const str = this.state.textSubmit;
-    const par = str.trim().split(/\r?\n|\r/);
+    const paragraphs = makeParagraph(str);
+    const words = wordFunc(str);
+    const characters = charFunc(str);
+    const sentences = sentFunc(str);
 
-    const removeEmptyElements = (arr) => {
-      const index = arr.findIndex((el) => el.trim() === '');
-      if (index === -1) return arr;
-      arr.splice(index, 1);
-      return removeEmptyElements(arr);
-    };
-    const emp = removeEmptyElements(par);
-    // console.log('PAR', par.length);
-    // console.log('remove empty', emp);
+    const emp = removeEmptyElements(paragraphs);
+
+    console.log('par comparison', paragraphs);
 
     this.state.textSubmit &&
       this.setState({
-        wordCount: str
-          .replace(/(\r\n|\n|\r)/gm, ' ')
-          .trim()
-          .split(' ')
-          .filter((w) => w).length,
-        charCount: str.replace(/[^a-z0-9+]+/gi, '').length,
-        sentCount: str
-          .replace('...', '')
-          .split(/[.!?]+\s/)
-          .filter(Boolean).length,
-        parCount: par.length,
+        wordCount: words.length,
+        charCount: characters.length,
+        sentCount: sentences.length,
+        parCount: paragraphs.length,
       });
   }
   handleClear(event) {
     event.preventDefault();
     this.setState({
       textSubmit: '',
-
       wordCount: 0,
       charCount: 0,
       sentCount: 0,
