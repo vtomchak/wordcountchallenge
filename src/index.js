@@ -86,89 +86,101 @@ class App extends React.Component {
   render() {
     console.log('State', this.state);
     return (
-      <div class='ui raised very padded text container segment'>
-        <form class='ui form' onSubmit={this.handleSubmit}>
-          <TextInput />
-          <div class='ui huge header'>Word Counter</div>
-          <div class='field'>
-            <textarea
-              value={this.state.textSubmit}
-              name='textSubmit'
-              onChange={this.handleChange}
-              placeholder='Write or copy your text here...'
-            ></textarea>
+      <div className='ui two stackable cards'>
+        <div className='fluid raised  card'>
+          <div class='content'>
+            <form class='ui form' onSubmit={this.handleSubmit}>
+              <div class='ui huge header'>Word Counter</div>
+              <div class='field'>
+                <textarea
+                  value={this.state.textSubmit}
+                  name='textSubmit'
+                  onChange={this.handleChange}
+                  placeholder='Write or copy your text here...'
+                ></textarea>
+              </div>
+              <div class='field'>
+                <div>
+                  <label>
+                    Word Count:
+                    <input
+                      type='checkbox'
+                      name='countSelected'
+                      checked={this.state.countSelected}
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                  <label>
+                    Character Count:
+                    <input
+                      type='checkbox'
+                      name='charSelected'
+                      checked={this.state.charSelected}
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                  <label>
+                    Sentence Count:
+                    <input
+                      type='checkbox'
+                      name='sentSelected'
+                      checked={this.state.sentSelected}
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                  <label>
+                    Paragraph Count:
+                    <input
+                      type='checkbox'
+                      name='parSelected'
+                      checked={this.state.parSelected}
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                  <label>
+                    Bigram Count:
+                    <input
+                      type='checkbox'
+                      name='bigramSelected'
+                      checked={this.state.bigramSelected}
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                  <label>
+                    Unique Bigram Count:
+                    <input
+                      type='checkbox'
+                      name='uniqueBigramSelected'
+                      checked={this.state.uniqueBigramSelected}
+                      onChange={this.handleChange}
+                    />
+                  </label>
+                </div>
+              </div>
+              <button class='ui right button' type='submit'>
+                Submit
+              </button>
+              <button
+                class='ui left button'
+                onClick={this.handleClear}
+                type='reset'
+                value='Reset'
+              >
+                Clear Text
+              </button>
+              {this.state.wordCount > 0 && (
+                <WordCountDisplay props={this.state} />
+              )}
+            </form>
           </div>
-          <div class='field'>
-            <div>
-              <label>
-                Word Count:
-                <input
-                  type='checkbox'
-                  name='countSelected'
-                  checked={this.state.countSelected}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Character Count:
-                <input
-                  type='checkbox'
-                  name='charSelected'
-                  checked={this.state.charSelected}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Sentence Count:
-                <input
-                  type='checkbox'
-                  name='sentSelected'
-                  checked={this.state.sentSelected}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Paragraph Count:
-                <input
-                  type='checkbox'
-                  name='parSelected'
-                  checked={this.state.parSelected}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Bigram Count:
-                <input
-                  type='checkbox'
-                  name='bigramSelected'
-                  checked={this.state.bigramSelected}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Unique Bigram Count:
-                <input
-                  type='checkbox'
-                  name='uniqueBigramSelected'
-                  checked={this.state.uniqueBigramSelected}
-                  onChange={this.handleChange}
-                />
-              </label>
+        </div>
+        {this.state.wordCount > 0 && (
+          <div className=' raised card'>
+            <div className='content'>
+              <TextInput />
             </div>
           </div>
-          <button class='ui right button' type='submit'>
-            Submit
-          </button>
-          <button
-            class='ui left button'
-            onClick={this.handleClear}
-            type='reset'
-            value='Reset'
-          >
-            Clear Text
-          </button>
-          {this.state.wordCount > 0 && <WordCountDisplay props={this.state} />}
-        </form>
+        )}
       </div>
     );
   }

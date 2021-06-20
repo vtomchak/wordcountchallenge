@@ -53,7 +53,10 @@ const WordCountDisplay = (props) => {
         <div class='item'>
           <i class='large github middle aligned icon'></i>
           <div class='content'>
-            <a class='header'>Bigram Count: {props.props.uniqueBigramCount}</a>
+            <a class='header'>
+              {' '}
+              Unique Bigram Count: {props.props.uniqueBigramCount}
+            </a>
             <div class='description'>Updated 34 mins ago</div>
           </div>
         </div>
