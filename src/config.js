@@ -5,6 +5,7 @@ export const checkboxValues = {
   'Paragraph Count:': false,
   'Bigram Count:': false,
   'Unique Bigram Count:': false,
+  'Is Palindrome?:': false,
 };
 export const counts = {
   'Word Count:': 0,

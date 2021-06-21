@@ -24,6 +24,9 @@ class App extends React.Component {
       textSubmit: '',
       checkboxValues,
       counts,
+      bigramData: {},
+      uniqueBigramData: {},
+      wordFreq: {},
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,9 +58,9 @@ class App extends React.Component {
     const uniqueBigrams = uniqueBigramWord(words);
 
     const emp = removeEmptyElements(paragraphs);
-    console.log('BIGRAMS', bigrams, 'UNIQUE', uniqueBigrams);
+    // console.log('BIGRAMS', bigrams, 'UNIQUE', uniqueBigrams);
 
-    console.log('par comparison', paragraphs);
+    // console.log('par comparison', paragraphs);
 
     this.state.textSubmit &&
       this.setState({
@@ -69,6 +72,8 @@ class App extends React.Component {
           'Bigram Count:': Object.keys(bigrams).length,
           'Unique Bigram Count:': Object.keys(uniqueBigrams).length,
         },
+        bigramData: bigrams,
+        uniqueBigramData: uniqueBigrams,
       });
   }
   handleClear(event) {
@@ -132,7 +137,7 @@ class App extends React.Component {
         {this.state.counts['Word Count:'] > 0 && (
           <div className=' raised card'>
             <div className='content'>
-              <TextInput />
+              <TextInput props={this.state} />
             </div>
           </div>
         )}
