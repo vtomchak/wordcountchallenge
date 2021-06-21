@@ -12,6 +12,8 @@ export function removeEmptyElements(arr) {
 export function wordFunc(str) {
   return str
     .replace(/(\r\n|\n|\r)/gm, ' ')
+    .split('.')
+    .join('')
     .trim()
     .split(' ')
     .filter((w) => w);
