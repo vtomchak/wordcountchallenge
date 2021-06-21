@@ -61,12 +61,12 @@ class App extends React.Component {
     this.state.textSubmit &&
       this.setState({
         counts: {
-          wordCount: words.length,
-          charCount: characters.length,
-          sentCount: sentences.length,
-          parCount: paragraphs.length,
-          bigramCount: Object.keys(bigrams).length,
-          uniqueBigramCount: Object.keys(uniqueBigrams).length,
+          'Word Count:': words.length,
+          'Character Count:': characters.length,
+          'Paragraph Count:': sentences.length,
+          'Sentence Count:': paragraphs.length,
+          'Bigram Count:': Object.keys(bigrams).length,
+          'Unique Bigram Count:': Object.keys(uniqueBigrams).length,
         },
       });
   }
@@ -122,13 +122,13 @@ class App extends React.Component {
               >
                 Clear Text
               </button>
-              {this.state.counts.wordCount > 0 && (
+              {this.state.counts['Word Count:'] > 0 && (
                 <WordCountDisplay props={this.state} />
               )}
             </form>
           </div>
         </div>
-        {this.state.counts.wordCount > 0 && (
+        {this.state.counts['Word Count:'] > 0 && (
           <div className=' raised card'>
             <div className='content'>
               <TextInput />

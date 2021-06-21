@@ -7,12 +7,12 @@ export const checkboxValues = {
   'Unique Bigram Count:': false,
 };
 export const counts = {
-  wordCount: 0,
-  charCount: 0,
-  sentCount: 0,
-  parCount: 0,
-  bigramCount: 0,
-  uniqueBigramCount: 0,
+  'Word Count:': 0,
+  'Character Count:': 0,
+  'Sentence Count:': 0,
+  'Paragraph Count:': 0,
+  'Bigram Count:': 0,
+  'Unique Bigram Count:': 0,
 };
 
 export const checkboxLabels = {
