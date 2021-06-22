@@ -2,7 +2,7 @@ import React from 'react';
 
 const Tables = (props) => {
   const prop = props.props;
-  const { title } = props;
+  const { title, label } = props;
   // console.log('PROPS IN TABLEEEE', props.props);
   // console.log('PROPS IN TABLE TITLE', props.title);
   // console.log('PROPS IN TABLEEEE', prop);
@@ -17,6 +17,10 @@ const Tables = (props) => {
         <thead>
           <tr>
             <th colspan='3'>{title}</th>
+          </tr>
+          <tr>
+            <th>{label}</th>
+            <th>Frequency</th>
           </tr>
         </thead>
 

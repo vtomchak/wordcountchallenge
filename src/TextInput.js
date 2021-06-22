@@ -7,10 +7,14 @@ const TextInput = (props) => {
   return (
     <div>
       <div class='ui one stackable cards'>
-        {Object.keys(prop.wordFreq).length >= 1 && (
+        {Object.keys(prop.wordFreqData).length >= 1 && (
           <div class='card'>
             <div class='content'>
-              <Tables props={prop.wordFreq} title={'Word Frequency Table'} />
+              <Tables
+                props={prop.wordFreqData}
+                title={'Word Frequency Table'}
+                label={'Word'}
+              />
             </div>
           </div>
         )}
@@ -20,6 +24,7 @@ const TextInput = (props) => {
               <Tables
                 props={prop.bigramData}
                 title={'Bigram Frequency Table'}
+                label={'Bigram'}
               />
             </div>
           </div>

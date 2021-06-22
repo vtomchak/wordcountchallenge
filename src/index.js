@@ -2,6 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TextInput from './TextInput';
 import WordCountDisplay from './WordCountDisplay';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
 import {
   makeParagraph,
   removeEmptyElements,
@@ -69,20 +75,20 @@ class App extends React.Component {
     textSubmit &&
       this.setState({
         counts: {
-          'Word Count:': words.length,
-          'Unique Word Count:': Object.keys(uniqueWords).length,
-          'Character Count:': characters.length,
-          'Sentence Count:': sentences.length,
-          'Paragraph Count:': paragraphs.length,
-          'Bigram Count:': Object.keys(bigrams).length,
-          'Unique Bigram Count:': Object.keys(uniqueBigrams).length,
-          'Is Palindrome?:': palindrome,
+          'Word Count': words.length,
+          'Unique Word Count': Object.keys(uniqueWords).length,
+          'Character Count': characters.length,
+          'Sentence Count': sentences.length,
+          'Paragraph Count': paragraphs.length,
+          'Bigram Count': Object.keys(bigrams).length,
+          'Unique Bigram Count': Object.keys(uniqueBigrams).length,
+          'Is Palindrome?': palindrome,
         },
       });
 
     checkboxValues['Show Word & Bigram Frequency Tables'] &&
       this.setState({
-        wordFreq: wordFreqs,
+        wordFreqData: wordFreqs,
         bigramData: bigrams,
       });
   }
@@ -115,16 +121,16 @@ class App extends React.Component {
               <div class='field'>
                 <div>
                   {Object.keys(checkboxValues).map((check) => (
-                    <label key={check}>
-                      {check}
-                      <input
-                        key={check}
+                    <FormGroup key={check}>
+                      <FormControlLabel
+                        control={
+                          <Checkbox onChange={this.handleChange} name={check} />
+                        }
+                        label={check}
                         type='checkbox'
-                        name={check}
                         checked={this.state.checkboxValues.check}
-                        onChange={this.handleChange}
                       />
-                    </label>
+                    </FormGroup>
                   ))}
                 </div>
               </div>
@@ -139,13 +145,13 @@ class App extends React.Component {
               >
                 Clear Text
               </button>
-              {this.state.counts['Word Count:'] > 0 && (
+              {this.state.counts['Word Count'] > 0 && (
                 <WordCountDisplay props={this.state} />
               )}
             </form>
           </div>
         </div>
-        {this.state.counts['Word Count:'] > 0 && (
+        {this.state.counts['Word Count'] > 0 && (
           <div className=' raised card'>
             <div className='content'>
               <TextInput props={this.state} />
