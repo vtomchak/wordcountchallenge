@@ -107,17 +107,18 @@ export function uniqueBigramWord(str) {
 const words = (stri) =>
   stri
     .replace(/(\r\n|\n|\r)/gm, ' ')
+    .replace(/\W/g, '')
     .trim()
     .split(' ')
     .filter((w) => w);
 export function wordFreq(str) {
-  const wrd = words(str);
+  // const wrd = words(str);
   let wordMap = {};
-  for (let i = 0; i < wrd.length; i++) {
-    if (!wordMap[wrd[i]]) {
-      wordMap[wrd[i]] = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (!wordMap[str[i]]) {
+      wordMap[str[i]] = 0;
     }
-    wordMap[wrd[i]] += 1;
+    wordMap[str[i]] += 1;
   }
   return wordMap;
 }

@@ -25,8 +25,7 @@ class App extends React.Component {
       checkboxValues,
       counts,
       bigramData: {},
-      uniqueBigramData: {},
-      wordFreq: {},
+      wordFreqData: {},
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,6 +56,7 @@ class App extends React.Component {
     const sentences = sentFunc(str);
     const bigrams = bigramWord(words);
     const uniqueBigrams = uniqueBigramWord(words);
+    const wordFreqs = wordFreq(words);
 
     const emp = removeEmptyElements(paragraphs);
     // console.log('BIGRAMS', bigrams, 'UNIQUE', uniqueBigrams);
@@ -77,9 +77,8 @@ class App extends React.Component {
 
     checkboxValues['Show Word & Bigram Frequency Tables'] &&
       this.setState({
-        wordFreq: {},
+        wordFreq: wordFreqs,
         bigramData: bigrams,
-        uniqueBigramData: uniqueBigrams,
       });
   }
 
