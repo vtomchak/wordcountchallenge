@@ -21,17 +21,19 @@ const Tables = (props) => {
         </thead>
 
         <tbody>
-          {Object.entries(prop).map((data) => {
-            return (
-              <tr>
-                <td class='collapsing'>
-                  <i class='folder icon'></i> {data[0]}
-                </td>
+          {Object.entries(prop)
+            .sort((a, b) => b[1] - a[1])
+            .map((data) => {
+              return (
+                <tr>
+                  <td class='collapsing'>
+                    <i class='folder icon'></i> {data[0]}
+                  </td>
 
-                <td class='right aligned collapsing'>{data[1]}</td>
-              </tr>
-            );
-          })}
+                  <td class='right aligned collapsing'>{data[1]}</td>
+                </tr>
+              );
+            })}
           {/* <tr>
             <td class='collapsing'>
               <i class='folder icon'></i> something
