@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TextInput from './TextInput';
-import WordCountDisplay from './WordCountDisplay';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
+import TableHolder from './TableHolder';
+import StatDisplay from './StatDisplay';
+
+import {
+  Header,
+  SubHeader,
+  SubmitButton,
+  PlaceHolder,
+} from './CustomComponents';
+
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import {
   makeParagraph,
@@ -14,9 +19,7 @@ import {
   wordFunc,
   charFunc,
   sentFunc,
-  bigram,
   bigramWord,
-  uniqueBigram,
   uniqueBigramWord,
   wordFreq,
   wordUnique,
@@ -66,11 +69,7 @@ class App extends React.Component {
     const wordFreqs = wordFreq(words);
     const uniqueWords = wordUnique(words);
     const palindrome = validPal(str);
-
     const emp = removeEmptyElements(paragraphs);
-    // console.log('BIGRAMS', bigrams, 'UNIQUE', uniqueBigrams);
-
-    // console.log('par comparison', paragraphs);
 
     textSubmit &&
       this.setState({
@@ -102,32 +101,24 @@ class App extends React.Component {
   }
   render() {
     console.log('State', this.state);
+    const { textSubmit, counts, checkboxValues } = this.state;
 
     return (
       <div className='ui two stackable cards'>
         <div className='fluid raised  card'>
           <div class='content'>
             <form class='ui form' onSubmit={this.handleSubmit}>
-              <h2 class='ui header'>
-                <i class='book icon'></i>
-
-                <div class='content'>
-                  Word Counter
-                  <div class='sub header'>Text Statistic Generator</div>
-                </div>
-              </h2>
+              <Header />
               <div class='field'>
                 <textarea
                   type='text'
-                  value={this.state.textSubmit}
+                  value={textSubmit}
                   name='textSubmit'
                   onChange={this.handleChange}
                   placeholder='Write or copy your text here...'
                 ></textarea>
               </div>
-              <div class='ui medium header'>
-                Select Statistics and Data you want to Display:
-              </div>
+              <SubHeader />
               <div className='ui stackable two column grid'>
                 <div class='column'>
                   <div class='field'>
@@ -142,7 +133,7 @@ class App extends React.Component {
                           }
                           label={check}
                           type='checkbox'
-                          checked={this.state.checkboxValues.check}
+                          checked={checkboxValues.check}
                         />
                       </FormGroup>
                     ))}
@@ -150,16 +141,13 @@ class App extends React.Component {
                 </div>
                 <div class='column'>
                   <div class='field'>
-                    {this.state.counts['Word Count'] > 0 && (
-                      <WordCountDisplay props={this.state} />
+                    {counts['Word Count'] > 0 && (
+                      <StatDisplay props={this.state} />
                     )}
                   </div>
                 </div>
               </div>
-
-              <button class='ui right button' type='submit'>
-                Submit
-              </button>
+              <SubmitButton />
               <button
                 class='ui left button'
                 onClick={this.handleClear}
@@ -171,25 +159,14 @@ class App extends React.Component {
             </form>
           </div>
         </div>
-        {this.state.counts['Word Count'] > 0 ? (
+        {counts['Word Count'] > 0 ? (
           <div className=' raised card'>
             <div className='content'>
-              <TextInput props={this.state} />
+              <TableHolder props={this.state} />
             </div>
           </div>
         ) : (
-          <div className='ui placeholder segment'>
-            <div class='ui icon header'>
-              <i class='chart bar outline icon'></i>
-
-              <div class='ui compact message'>
-                <div class='header'>
-                  This is where your frequency charts will appear
-                </div>
-                <p>if you select the "Show Tables" checkbox</p>
-              </div>
-            </div>
-          </div>
+          <PlaceHolder />
         )}
       </div>
     );

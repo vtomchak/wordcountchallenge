@@ -38,10 +38,8 @@ export function bigram(str) {
     .trim()
     .split(' ')
     .filter((w) => w);
-  // console.log(words)
   for (let i = 0; i < words.length - 1; i++) {
     let twoWords = [words[i], words[i + 1]];
-    // console.log({twoWords})
     if (!bigMap[twoWords]) {
       bigMap[twoWords] = 0;
     }
@@ -53,7 +51,6 @@ export function bigramWord(str) {
   let bigMap = {};
   for (let i = 0; i < str.length - 1; i++) {
     let twoWords = [str[i], str[i + 1]];
-    // console.log({twoWords})
     if (!bigMap[twoWords]) {
       bigMap[twoWords] = 0;
     }
@@ -61,7 +58,6 @@ export function bigramWord(str) {
   }
   return bigMap;
 }
-// console.log(bigram("the quick person did not realize his speed and the quick person bumped "))
 
 export function uniqueBigram(str) {
   let bigMap = {};
@@ -70,7 +66,6 @@ export function uniqueBigram(str) {
     .trim()
     .split(' ')
     .filter((w) => w);
-
   for (let i = 0; i < words.length - 1; i++) {
     let twoWords = [words[i], words[i + 1]];
     if (!bigMap[twoWords]) {
@@ -88,7 +83,6 @@ export function uniqueBigram(str) {
 
 export function uniqueBigramWord(str) {
   let bigMap = {};
-
   for (let i = 0; i < str.length - 1; i++) {
     let twoWords = [str[i], str[i + 1]];
     if (!bigMap[twoWords]) {
@@ -104,7 +98,6 @@ export function uniqueBigramWord(str) {
   return bigMap;
 }
 
-// console.log(uniqueBigram("the quick person did not realize his speed and the quick person bumped "))
 const words = (stri) =>
   stri
     .replace(/(\r\n|\n|\r)/gm, ' ')
@@ -112,8 +105,8 @@ const words = (stri) =>
     .trim()
     .split(' ')
     .filter((w) => w);
+
 export function wordFreq(str) {
-  // const wrd = words(str);
   let wordMap = {};
   for (let i = 0; i < str.length; i++) {
     if (!wordMap[str[i]]) {
@@ -124,10 +117,7 @@ export function wordFreq(str) {
   return wordMap;
 }
 
-// console.log(wordFreq("the quick person did not realize his speed and the quick person bumped "))
-
 export function wordUnique(str) {
-  // const wrd = words(str);
   let wordMap = {};
   for (let i = 0; i < str.length; i++) {
     if (!wordMap[str[i]]) {
@@ -142,16 +132,6 @@ export function wordUnique(str) {
   }
   return wordMap;
 }
-export function handleChange(event) {
-  const target = event.target;
-  const value = target.type === 'checkbox' ? target.checked : target.value;
-  const name = target.name;
-  console.log('TARGET', target);
-  this.setState({
-    [name]: value,
-  });
-}
-// console.log(wordUnique("the quick person did not realize his speed and the quick person bumped "))
 
 export function validPal(str) {
   str = str.replace(/[^a-z0-9+]+/gi, '').toLowerCase();

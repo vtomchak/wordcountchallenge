@@ -1,8 +1,7 @@
 import React from 'react';
 import Tables from './Tables';
 
-const TextInput = (props) => {
-  // console.log('PROPS in text input', props.props);
+const TableHolder = (props) => {
   const prop = props.props;
   return (
     <div>
@@ -34,4 +33,4 @@ const TextInput = (props) => {
   );
 };
 
-export default TextInput;
+export default TableHolder;

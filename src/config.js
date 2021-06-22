@@ -19,12 +19,3 @@ export const counts = {
   'Unique Bigram Count': 0,
   'Is Palindrome?': false,
 };
-
-export const checkboxLabels = {
-  'Word Count:': 'countSelected',
-  'Character Count:': 'charSelected',
-  'Sentence Count:': 'sentSelected',
-  'Paragraph Count:': 'parSelected',
-  'Bigram Count:': ' bigramSelected',
-  'Unique Bigram Count:': 'uniqueBigramSelected',
-};
