@@ -57,6 +57,7 @@ class App extends React.Component {
     const bigrams = bigramWord(words);
     const uniqueBigrams = uniqueBigramWord(words);
     const wordFreqs = wordFreq(words);
+    const uniqueWords = wordUnique(words);
 
     const emp = removeEmptyElements(paragraphs);
     // console.log('BIGRAMS', bigrams, 'UNIQUE', uniqueBigrams);
@@ -67,11 +68,13 @@ class App extends React.Component {
       this.setState({
         counts: {
           'Word Count:': words.length,
+          'Unique Word Count:': Object.keys(uniqueWords).length,
           'Character Count:': characters.length,
           'Sentence Count:': sentences.length,
           'Paragraph Count:': paragraphs.length,
           'Bigram Count:': Object.keys(bigrams).length,
           'Unique Bigram Count:': Object.keys(uniqueBigrams).length,
+          'Is Palindrome?:': false,
         },
       });
 

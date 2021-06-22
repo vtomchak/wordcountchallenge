@@ -126,13 +126,13 @@ export function wordFreq(str) {
 // console.log(wordFreq("the quick person did not realize his speed and the quick person bumped "))
 
 export function wordUnique(str) {
-  const wrd = words(str);
+  // const wrd = words(str);
   let wordMap = {};
-  for (let i = 0; i < wrd.length; i++) {
-    if (!wordMap[wrd[i]]) {
-      wordMap[wrd[i]] = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (!wordMap[str[i]]) {
+      wordMap[str[i]] = 0;
     }
-    wordMap[wrd[i]] += 1;
+    wordMap[str[i]] += 1;
   }
   for (const key in wordMap) {
     if (wordMap[key] > 1) {
