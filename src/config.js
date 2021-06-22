@@ -6,6 +6,7 @@ export const checkboxValues = {
   'Bigram Count:': false,
   'Unique Bigram Count:': false,
   'Is Palindrome?:': false,
+  'Show Word & Bigram Frequency Tables': false,
 };
 export const counts = {
   'Word Count:': 0,

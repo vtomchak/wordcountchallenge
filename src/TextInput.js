@@ -2,7 +2,7 @@ import React from 'react';
 import Tables from './Tables';
 
 const TextInput = (props) => {
-  console.log('PROPS in text input', props.props);
+  // console.log('PROPS in text input', props.props);
   const prop = props.props;
   return (
     <div>
@@ -10,21 +10,27 @@ const TextInput = (props) => {
         {Object.keys(prop.bigramData).length >= 1 && (
           <div class='card'>
             <div class='content'>
-              <Tables props={prop.bigramData} />
+              <Tables
+                props={prop.bigramData}
+                title={'Bigram Frequency Table'}
+              />
             </div>
           </div>
         )}
         {Object.keys(prop.uniqueBigramData).length >= 1 && (
           <div class='card'>
             <div class='content'>
-              <Tables props={prop.uniqueBigramData} />
+              <Tables
+                props={prop.uniqueBigramData}
+                title={'Unique Bigram Frequency Table'}
+              />
             </div>
           </div>
         )}
         {Object.keys(prop.wordFreq).length >= 1 && (
           <div class='card'>
             <div class='content'>
-              <Tables props={prop.wordFreq} />
+              <Tables props={prop.wordFreq} title={'Word Frequency Table'} />
             </div>
           </div>
         )}

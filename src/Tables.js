@@ -2,7 +2,9 @@ import React from 'react';
 
 const Tables = (props) => {
   const prop = props.props;
+  const { title } = props;
   // console.log('PROPS IN TABLEEEE', props.props);
+  // console.log('PROPS IN TABLE TITLE', props.title);
   // console.log('PROPS IN TABLEEEE', prop);
   // console.log('PROP ENTRIES', Object.entries(prop));
   // const map = Object.entries(prop).map((data) => {
@@ -14,7 +16,7 @@ const Tables = (props) => {
       <table class='ui celled striped table'>
         <thead>
           <tr>
-            <th colspan='3'>Data</th>
+            <th colspan='3'>{title}</th>
           </tr>
         </thead>
 

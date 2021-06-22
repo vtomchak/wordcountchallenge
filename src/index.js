@@ -49,7 +49,8 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const str = this.state.textSubmit;
+    const { textSubmit, checkboxValues } = this.state;
+    const str = textSubmit;
     const paragraphs = makeParagraph(str);
     const words = wordFunc(str);
     const characters = charFunc(str);
@@ -62,7 +63,7 @@ class App extends React.Component {
 
     // console.log('par comparison', paragraphs);
 
-    this.state.textSubmit &&
+    textSubmit &&
       this.setState({
         counts: {
           'Word Count:': words.length,
@@ -72,10 +73,16 @@ class App extends React.Component {
           'Bigram Count:': Object.keys(bigrams).length,
           'Unique Bigram Count:': Object.keys(uniqueBigrams).length,
         },
+      });
+
+    checkboxValues['Show Word & Bigram Frequency Tables'] &&
+      this.setState({
+        wordFreq: {},
         bigramData: bigrams,
         uniqueBigramData: uniqueBigrams,
       });
   }
+
   handleClear(event) {
     event.preventDefault();
     this.setState({
