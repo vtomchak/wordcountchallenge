@@ -11,6 +11,7 @@ export function removeEmptyElements(arr) {
 
 export function wordFunc(str) {
   return str
+    .toLowerCase()
     .replace(/(\r\n|\n|\r)/gm, ' ')
     .split('.')
     .join('')

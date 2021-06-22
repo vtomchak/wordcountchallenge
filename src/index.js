@@ -108,7 +108,14 @@ class App extends React.Component {
         <div className='fluid raised  card'>
           <div class='content'>
             <form class='ui form' onSubmit={this.handleSubmit}>
-              <div class='ui huge header'>Word Counter</div>
+              <h2 class='ui header'>
+                <i class='book icon'></i>
+
+                <div class='content'>
+                  Word Counter
+                  <div class='sub header'>Text Statistic Generator</div>
+                </div>
+              </h2>
               <div class='field'>
                 <textarea
                   type='text'
@@ -118,22 +125,38 @@ class App extends React.Component {
                   placeholder='Write or copy your text here...'
                 ></textarea>
               </div>
-              <div class='field'>
-                <div>
-                  {Object.keys(checkboxValues).map((check) => (
-                    <FormGroup key={check}>
-                      <FormControlLabel
-                        control={
-                          <Checkbox onChange={this.handleChange} name={check} />
-                        }
-                        label={check}
-                        type='checkbox'
-                        checked={this.state.checkboxValues.check}
-                      />
-                    </FormGroup>
-                  ))}
+              <div class='ui medium header'>
+                Select Statistics and Data you want to Display:
+              </div>
+              <div className='ui stackable two column grid'>
+                <div class='column'>
+                  <div class='field'>
+                    {Object.keys(checkboxValues).map((check) => (
+                      <FormGroup key={check}>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              onChange={this.handleChange}
+                              name={check}
+                            />
+                          }
+                          label={check}
+                          type='checkbox'
+                          checked={this.state.checkboxValues.check}
+                        />
+                      </FormGroup>
+                    ))}
+                  </div>
+                </div>
+                <div class='column'>
+                  <div class='field'>
+                    {this.state.counts['Word Count'] > 0 && (
+                      <WordCountDisplay props={this.state} />
+                    )}
+                  </div>
                 </div>
               </div>
+
               <button class='ui right button' type='submit'>
                 Submit
               </button>
@@ -145,16 +168,26 @@ class App extends React.Component {
               >
                 Clear Text
               </button>
-              {this.state.counts['Word Count'] > 0 && (
-                <WordCountDisplay props={this.state} />
-              )}
             </form>
           </div>
         </div>
-        {this.state.counts['Word Count'] > 0 && (
+        {this.state.counts['Word Count'] > 0 ? (
           <div className=' raised card'>
             <div className='content'>
               <TextInput props={this.state} />
+            </div>
+          </div>
+        ) : (
+          <div className='ui placeholder segment'>
+            <div class='ui icon header'>
+              <i class='chart bar outline icon'></i>
+
+              <div class='ui compact message'>
+                <div class='header'>
+                  This is where your frequency charts will appear
+                </div>
+                <p>if you select the "Show Tables" checkbox</p>
+              </div>
             </div>
           </div>
         )}
