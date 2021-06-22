@@ -151,3 +151,17 @@ export function handleChange(event) {
   });
 }
 // console.log(wordUnique("the quick person did not realize his speed and the quick person bumped "))
+
+export function validPal(str) {
+  str = str.replace(/[^a-z0-9+]+/gi, '').toLowerCase();
+  let pointer1 = 0;
+  let pointer2 = str.length - 1;
+  while (pointer1 < pointer2) {
+    pointer1++;
+    pointer2--;
+    if (str[pointer1] !== str[pointer2]) {
+      return 'no';
+    }
+  }
+  return 'yes';
+}
