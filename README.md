@@ -1,4 +1,6 @@
 # Word Counter Challenge
+ Challenge # 2- Word Count Challenge
+
 A React web application that displays a variety of statistics of input text based on user selection.
 
 [Click here to see the deployed site](https://wordcountchallenge.herokuapp.com/)
@@ -66,8 +68,12 @@ Javascript transpiled using Babel.
 
 **User inputs texts and selects statistics and data to view**
 
-![User Input](screenshot1.png)
+![User Input](screenshot2.png)
 
-**Results!**
+**Results with Word Frequency table**
 
-![Results](screenshot1.png)
+![Results Word](screenshot3.png)
+
+**Results with Bigram Frequency table**
+
+![Results Bigram](screenshot4.png)
