@@ -12,7 +12,8 @@ export function removeEmptyElements(arr) {
 export function wordFunc(str) {
   return str
     .toLowerCase()
-    .replace(/(\r\n|\n|\r)/gm, ' ')
+    .replace(/[\W_]+/g, ' ')
+
     .split('.')
     .join('')
     .trim()
@@ -98,13 +99,13 @@ export function uniqueBigramWord(str) {
   return bigMap;
 }
 
-const words = (stri) =>
-  stri
-    .replace(/(\r\n|\n|\r)/gm, ' ')
-    .replace(/\W/g, '')
-    .trim()
-    .split(' ')
-    .filter((w) => w);
+// const words = (stri) =>
+//   stri
+//     .replace(/(\r\n|\n|\r)/gm, ' ')
+//     .replace(/\W/g, '')
+//     .trim()
+//     .split(' ')
+//     .filter((w) => w);
 
 export function wordFreq(str) {
   let wordMap = {};

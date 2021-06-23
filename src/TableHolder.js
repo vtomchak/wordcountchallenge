@@ -5,10 +5,10 @@ const TableHolder = (props) => {
   const prop = props.props;
   return (
     <div>
-      <div class='ui one stackable cards'>
+      <div className='ui one stackable cards'>
         {Object.keys(prop.wordFreqData).length >= 1 && (
-          <div class='card'>
-            <div class='content'>
+          <div className='card'>
+            <div className='content'>
               <Tables
                 props={prop.wordFreqData}
                 title={'Word Frequency Table'}
@@ -18,8 +18,8 @@ const TableHolder = (props) => {
           </div>
         )}
         {Object.keys(prop.bigramData).length >= 1 && (
-          <div class='card'>
-            <div class='content'>
+          <div className='card'>
+            <div className='content'>
               <Tables
                 props={prop.bigramData}
                 title={'Bigram Frequency Table'}

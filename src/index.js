@@ -100,16 +100,15 @@ class App extends React.Component {
     });
   }
   render() {
-    console.log('State', this.state);
     const { textSubmit, counts, checkboxValues } = this.state;
 
     return (
       <div className='ui two stackable cards'>
         <div className='fluid raised  card'>
-          <div class='content'>
-            <form class='ui form' onSubmit={this.handleSubmit}>
+          <div className='content'>
+            <form className='ui form' onSubmit={this.handleSubmit}>
               <Header />
-              <div class='field'>
+              <div className='field'>
                 <textarea
                   type='text'
                   value={textSubmit}
@@ -120,8 +119,8 @@ class App extends React.Component {
               </div>
               <SubHeader />
               <div className='ui stackable two column grid'>
-                <div class='column'>
-                  <div class='field'>
+                <div className='column'>
+                  <div className='field'>
                     {Object.keys(checkboxValues).map((check) => (
                       <FormGroup key={check}>
                         <FormControlLabel
@@ -139,8 +138,8 @@ class App extends React.Component {
                     ))}
                   </div>
                 </div>
-                <div class='column'>
-                  <div class='field'>
+                <div className='column'>
+                  <div className='field'>
                     {counts['Word Count'] > 0 && (
                       <StatDisplay props={this.state} />
                     )}
@@ -149,7 +148,7 @@ class App extends React.Component {
               </div>
               <SubmitButton />
               <button
-                class='ui left button'
+                className='ui left button'
                 onClick={this.handleClear}
                 type='reset'
                 value='Reset'

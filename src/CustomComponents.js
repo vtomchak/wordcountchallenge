@@ -2,11 +2,11 @@ import React from 'react';
 
 export const Header = () => {
   return (
-    <h2 class='ui header'>
-      <i class='book icon'></i>
-      <div class='content'>
+    <h2 className='ui header'>
+      <i className='book icon'></i>
+      <div className='content'>
         Word Counter
-        <div class='sub header'>Text Statistic Generator</div>
+        <div className='sub header'>Text Statistic Generator</div>
       </div>
     </h2>
   );
@@ -14,15 +14,15 @@ export const Header = () => {
 
 export const SubHeader = () => {
   return (
-    <div class='ui medium header'>
-      Select Statistics and Data you want to Display:
+    <div className='ui medium header'>
+      Select the statistics and data you want to display:
     </div>
   );
 };
 
 export const SubmitButton = () => {
   return (
-    <button class='ui right button' type='submit'>
+    <button className='ui right button' type='submit'>
       Submit
     </button>
   );
@@ -31,11 +31,11 @@ export const SubmitButton = () => {
 export const PlaceHolder = () => {
   return (
     <div className='ui placeholder segment'>
-      <div class='ui icon header'>
-        <i class='chart bar outline icon'></i>
+      <div className='ui icon header'>
+        <i className='chart bar outline icon'></i>
 
-        <div class='ui compact message'>
-          <div class='header'>
+        <div className='ui compact message'>
+          <div className='header'>
             This is where your frequency charts will appear
           </div>
           <p>if you select the "Show Tables" checkbox</p>
